@@ -9,16 +9,16 @@ public class ConexaoBanco {
 	
 	private static final String usuario="root";
 	private static final String senha="lucas100";
-	private static final String bancourl="jdbc:mysql://localhost/E-commerce";
+	private static final String bancourl="jdbc:mysql://localhost:3306/ecommerce";
 	
 	public static Connection conectaBD() throws Exception{
-		Class.forName("com.mysql.jdbc.Driver");
 		
-		Connection conn= null;
 		
-			conn = DriverManager.getConnection(bancourl,usuario,senha);
+		Connection connection= DriverManager.getConnection(bancourl, usuario, senha);
+		
 			
-		return conn;
+			
+		return connection;
 	}
 	public static void main(String[] args) throws Exception {
 		Connection con= conectaBD();

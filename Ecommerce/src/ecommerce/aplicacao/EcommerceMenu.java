@@ -2,7 +2,7 @@ package ecommerce.aplicacao;
 import java.util.Scanner;
 
 import ecommerce.Produto;
-import ecommerce.produto.dao.*;
+import ecommerce.produto.dao.ProdutoDAO;
 
 public class EcommerceMenu {
 
@@ -16,7 +16,11 @@ public class EcommerceMenu {
 			
 			switch(opcao){
 			case 1:
-				System.out.println("Opçao 1 selecionada.");
+				System.out.println("Opçao 1-Ver lista de produtos selecionada.");
+				
+				for(Produto p: ProdutoDAO.getProdutos()) {
+					System.out.println("Nome Produto:" + p.getNome());
+				}
                 break;
 			case 2:
 				System.out.println("Opçao 2-Adcionar Produto selecionada.");
