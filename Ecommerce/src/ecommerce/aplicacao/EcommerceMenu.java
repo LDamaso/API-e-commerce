@@ -19,7 +19,7 @@ public class EcommerceMenu {
 				System.out.println("Opçao 1-Ver lista de produtos selecionada.");
 				
 				for(Produto p: ProdutoDAO.getProdutos()) {
-					System.out.println("Nome Produto:" + p.getNome());
+					System.out.println("Id do produto: "+p.getIdproduto()+" Nome Produto:" + p.getNome()+" Preco: "+ p.getPreco()+" Quantidade no estoque:"+p.getQtdestoque());
 				}
                 break;
 			case 2:
@@ -47,10 +47,54 @@ public class EcommerceMenu {
 				
                 break;
 			case 3:
-				System.out.println("Opçao 3 selecionada.");
+				System.out.println("Opçao 3 Remover Produto selecionada.");
+				
+				Produto produtodeletar = new Produto();
+				ProdutoDAO produtoDaodeletar = new ProdutoDAO();
+				
+				System.out.println("Digite o id pro produto a ser Deletado");
+				int idproddeletar;
+				idproddeletar = scanner.nextInt();
+				produtodeletar.setIdproduto(idproddeletar);
+				
+				
+				produtoDaodeletar.remover(idproddeletar);
+				
+				
+				
+				
                 break;
 			case 4:
-				System.out.println("Opçao 4 selecionada.");
+				System.out.println("Opçao 4 Atualizar detalhes do produto selecionada.");
+				Produto p1= new Produto();
+				ProdutoDAO produtoDaoatualizar = new ProdutoDAO();
+				
+				System.out.println("Digite o novo nome:");
+				String novonome;
+				novonome = scanner.next();
+				p1.setNome(novonome);
+				
+				
+				System.out.println("Digite o novo preco");
+				Double novopreco;
+				novopreco = scanner.nextDouble();
+				p1.setPreco(novopreco);
+				
+				System.out.println("Digite a nova quantidade em estoque: ");
+				int novoqtd;
+				novoqtd = scanner.nextInt();
+				p1.setQtdestoque(novoqtd);
+				
+				System.out.println("Id do produto para ser atualizado");
+				int idprod;
+				idprod = scanner.nextInt();
+				p1.setIdproduto(idprod);
+				
+				
+				produtoDaoatualizar.atualizar(p1);
+				
+				
+				
                 break;
 			case 5:
 				System.out.println("Opçao 5 selecionada.");
