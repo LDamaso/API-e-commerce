@@ -9,7 +9,8 @@ public class EcommerceMenu {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int opcao;
-		
+		Produto produto = new Produto(null,0,0);
+		ProdutoDAO produtoDao = new ProdutoDAO();
 		do {
 			exibirMenu();
 			opcao = scanner.nextInt();
@@ -24,10 +25,7 @@ public class EcommerceMenu {
                 break;
 			case 2:
 				System.out.println("Opçao 2-Adcionar Produto selecionada.");
-
-				Produto produto = new Produto();
-				ProdutoDAO produtoDao = new ProdutoDAO();
-				
+			
 				System.out.println("Digite o nome do Produto:");
 				String nome;
 				nome = scanner.next();	
@@ -49,49 +47,46 @@ public class EcommerceMenu {
 			case 3:
 				System.out.println("Opçao 3 Remover Produto selecionada.");
 				
-				Produto produtodeletar = new Produto();
-				ProdutoDAO produtoDaodeletar = new ProdutoDAO();
+				
 				
 				System.out.println("Digite o id pro produto a ser Deletado");
 				int idproddeletar;
 				idproddeletar = scanner.nextInt();
-				produtodeletar.setIdproduto(idproddeletar);
+				produto.setIdproduto(idproddeletar);
 				
 				
-				produtoDaodeletar.remover(idproddeletar);
+				produtoDao.remover(idproddeletar);
 				
 				
 				
 				
                 break;
 			case 4:
-				System.out.println("Opçao 4 Atualizar detalhes do produto selecionada.");
-				Produto p1= new Produto();
-				ProdutoDAO produtoDaoatualizar = new ProdutoDAO();
+				System.out.println("Opçao 4 Atualizar detalhes do produto selecionada.");		
 				
 				System.out.println("Digite o novo nome:");
 				String novonome;
 				novonome = scanner.next();
-				p1.setNome(novonome);
+				produto.setNome(novonome);
 				
 				
 				System.out.println("Digite o novo preco");
 				Double novopreco;
 				novopreco = scanner.nextDouble();
-				p1.setPreco(novopreco);
+				produto.setPreco(novopreco);
 				
 				System.out.println("Digite a nova quantidade em estoque: ");
 				int novoqtd;
 				novoqtd = scanner.nextInt();
-				p1.setQtdestoque(novoqtd);
+				produto.setQtdestoque(novoqtd);
 				
 				System.out.println("Id do produto para ser atualizado");
 				int idprod;
 				idprod = scanner.nextInt();
-				p1.setIdproduto(idprod);
+				produto.setIdproduto(idprod);
 				
 				
-				produtoDaoatualizar.atualizar(p1);
+				produtoDao.atualizar(produto);
 				
 				
 				
@@ -125,6 +120,7 @@ public class EcommerceMenu {
 		System.out.println("5- Adcionar Produto ao carrinho");
 		System.out.println("6- Confirmar Pedido");
 		System.out.println("0- Saindo do programa...");
+		System.out.println("===================");
 		
 	}
 }

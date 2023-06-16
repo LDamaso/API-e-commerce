@@ -7,6 +7,16 @@ public class Produto {
 	private int qtdestoque;
 	
 	
+	
+	
+	
+	
+	public Produto(String nome, double preco, int qtdestoque) {
+		super();
+		this.nome = nome;
+		this.preco = preco;
+		this.qtdestoque = qtdestoque;
+	}
 	public int getIdproduto() {
 		return idproduto;
 	}
