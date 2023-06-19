@@ -2,6 +2,8 @@ package ecommerce.aplicacao;
 import java.util.Scanner;
 
 import ecommerce.Produto;
+import ecommerce.Carrinhocompras;
+
 import ecommerce.produto.dao.ProdutoDAO;
 
 public class EcommerceMenu {
@@ -11,6 +13,8 @@ public class EcommerceMenu {
 		int opcao;
 		Produto produto = new Produto(null,0,0);
 		ProdutoDAO produtoDao = new ProdutoDAO();
+		Carrinhocompras carrinhocompras =  new Carrinhocompras();
+		
 		do {
 			exibirMenu();
 			opcao = scanner.nextInt();
@@ -70,7 +74,7 @@ public class EcommerceMenu {
 				produto.setNome(novonome);
 				
 				
-				System.out.println("Digite o novo preco");
+				System.out.println("Digite o novo preco:");
 				Double novopreco;
 				novopreco = scanner.nextDouble();
 				produto.setPreco(novopreco);
@@ -92,11 +96,36 @@ public class EcommerceMenu {
 				
                 break;
 			case 5:
-				System.out.println("Opçao 5 selecionada.");
+				System.out.println("Opçao 5 Adcionar Produto ao carrinho selecionada.");
+				
+				System.out.println("Digite o Id do produto que deseja adcionar no carrinho:");
+				int id;
+				id = scanner.nextInt();
+				
+				System.out.println("Digite a quantidade que deseja adcionar ao carrinho:");
+				int qtdcarrinho;
+				qtdcarrinho = scanner.nextInt();
+				
+				carrinhocompras.adcionarItem(id, qtdcarrinho);
+				
                 break;
 			case 6:
-				System.out.println("Opçao 6 selecionada.");
+				System.out.println("Opçao 6 Listar produtos presentes no carrinho selecionada.");
+				
+				carrinhocompras.listarItens();
+				
                 break;
+			case 7:
+				System.out.println("Opçao 7 Remover produto do carrinho selecionada.");
+				System.out.println("Digite o nome do produto que deseja remover:");
+				String nomeremover =scanner.next();
+				
+				carrinhocompras.removerDoCarrinho(nomeremover);
+				
+				break;
+			case 8:
+				System.out.println("Opçao 8 Confirmar Pedido selecionada.");
+				break;
 			case 0:
 				System.out.println("Opçao 0 selecionada.");
 			default:
@@ -118,7 +147,9 @@ public class EcommerceMenu {
 		System.out.println("3- Remover Produto");
 		System.out.println("4- Atualizar detalhes do produto");
 		System.out.println("5- Adcionar Produto ao carrinho");
-		System.out.println("6- Confirmar Pedido");
+		System.out.println("6- Listar produtos presentes no carrinho");
+		System.out.println("7- Remover produto do carrinho");
+		System.out.println("8- Confirmar Pedido");
 		System.out.println("0- Saindo do programa...");
 		System.out.println("===================");
 		
