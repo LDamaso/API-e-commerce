@@ -62,8 +62,6 @@ public class EcommerceMenu {
 				produtoDao.remover(idproddeletar);
 				
 				
-				
-				
                 break;
 			case 4:
 				System.out.println("Opçao 4 Atualizar detalhes do produto selecionada.");		
