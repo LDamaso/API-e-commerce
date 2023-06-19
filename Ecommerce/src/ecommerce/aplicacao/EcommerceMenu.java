@@ -11,7 +11,7 @@ public class EcommerceMenu {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int opcao;
-		Produto produto = new Produto(null,0,0);
+		Produto produto = new Produto(0,null,0,0);
 		ProdutoDAO produtoDao = new ProdutoDAO();
 		Carrinhocompras carrinhocompras =  new Carrinhocompras();
 		
@@ -125,9 +125,23 @@ public class EcommerceMenu {
 				break;
 			case 8:
 				System.out.println("Opçao 8 Confirmar Pedido selecionada.");
+				carrinhocompras.confirmar();
+				
+				System.out.println("Digite 1 para confirmar a compra");
+				System.out.println("Digite 2 para cancelar");
+				
+				if(scanner.nextInt() == 1) {
+					System.out.println("Compra confirmada com sucesso");
+					carrinhocompras.atualizarEstoque();
+					
+					
+				}else {
+					System.out.println("Confimacao cancelada");
+				}
+					
 				break;
 			case 0:
-				System.out.println("Opçao 0 selecionada.");
+				System.out.println("Opçao 0 Saindo do programa....");
 			default:
 				System.out.println("Opçao invalida");			
 			}

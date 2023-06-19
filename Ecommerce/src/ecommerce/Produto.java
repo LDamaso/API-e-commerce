@@ -11,8 +11,9 @@ public class Produto {
 	
 	
 	
-	public Produto(String nome, double preco, int qtdestoque) {
+	public Produto(int idproduto, String nome, double preco, int qtdestoque) {
 		super();
+		this.idproduto = idproduto;
 		this.nome = nome;
 		this.preco = preco;
 		this.qtdestoque = qtdestoque;
